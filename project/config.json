@@ -1,7 +1,7 @@
 {
     "config":{
         "username": "userdba",
-        "password": "s3cur3w0rd4p4$$",
+        "password": "s3cur3w0rd4p4$S",
         "db": "mydb",
         "db_host":"localhost"
     }
