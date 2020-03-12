@@ -6,11 +6,16 @@ services:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    dockerfile: ./mysql.Dockerfile
+    ports:
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: P4$$W0rd3nCrypt3d
 
   app:
-    image: python3
+    image: python:latest
     restart: always
+    build:
+      dockerfile: ./app.Dockerfile
     ports:
       - 5000:5000
