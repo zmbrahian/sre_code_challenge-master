@@ -27,9 +27,12 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo "Haciendo Deploy"
-               // withCredentials([usernamePassword(credentialsId: 'aws-profile', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                withCredentials([usernamePassword(credentialsId: 'aws-profile', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     // the code in here can access $pass and $user
-               // }
+                    sh "ecs-cli configure profile --profile-name profile_name --access-key $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY"
+                    sh "ecs-cli configure --cluster pdn-hello-ecs --default-launch-type FARGATE --region us-east-2 --config-name config-ecs"
+                    sh "ecs-cli compose --file docker-compose.yml service up"
+                }
             }
         }
         stage('ServiceTest') {
