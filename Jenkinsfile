@@ -5,6 +5,22 @@ pipeline {
 
     environment {
         COMPOSE_PROJECT_NAME = "sre_code_challenge-master"
+        ECS_CONFIG="version: 1\
+task_definition:\
+  task_execution_role: ecsTaskExecutionRole\
+  ecs_network_mode: awsvpc\
+  task_size:\
+    mem_limit: 0.5GB\
+    cpu_limit: 256\
+run_params:\
+  network_configuration:\
+    awsvpc_configuration:\
+      subnets:\
+        - 'subnet ID 1'\
+        - 'subnet ID 2'\
+      security_groups:\
+        - 'security group ID'\
+      assign_public_ip: ENABLED"
     }
 
     stages {
@@ -31,24 +47,7 @@ pipeline {
                     // the code in here can access $pass and $user
                     sh "ecs-cli configure profile --profile-name profile_name --access-key $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY"
                     sh "ecs-cli configure --cluster pdn-hello-ecs --default-launch-type EC2 --region us-east-2 --config-name config-ecs"
-                    sh "cat <<EOF >> ecs-params.yml\n
-version: 1\n
-task_definition:\n
-  task_execution_role: ecsTaskExecutionRole\n
-  ecs_network_mode: awsvpc\n
-  task_size:\n
-    mem_limit: 0.5GB\n
-    cpu_limit: 256\n
-run_params:\n
-  network_configuration:\n
-    awsvpc_configuration:\n
-      subnets:\n
-        - "subnet ID 1"\n
-        - "subnet ID 2"\n
-      security_groups:\n
-        - "security group ID"\n
-      assign_public_ip: ENABLED\n
-EOF"
+                    sh "echo ${ECS_CONFIG} >> ecs-params.yml"
                     sh "cat ecs-params.yml"
 //                    sh "ecs-cli compose --file docker-compose.yml service up"
                 }
