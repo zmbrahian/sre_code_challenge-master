@@ -5,6 +5,13 @@ task_definition:
   task_size:
     mem_limit: 0.5GB
     cpu_limit: 256
+  services:
+    db:
+      repository_credentials:
+        credentials_parameter: arn:aws:iam::030359054911:policy/dockerhubsecret
+    app:
+      repository_credentials:
+        credentials_parameter: arn:aws:iam::030359054911:policy/dockerhubsecret   
 run_params:
   network_configuration:
     awsvpc_configuration:
