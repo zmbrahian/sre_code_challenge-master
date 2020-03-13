@@ -2,8 +2,8 @@ version: '3.4'
 
 services:
 
-  db.${BUILD_ID}:
-    image: mysql
+  db:
+    image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     build:
@@ -16,7 +16,7 @@ services:
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
-  app.${BUILD_ID}:
+  app:
     image: python:latest
     restart: always
     build:
