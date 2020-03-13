@@ -14,6 +14,7 @@ pipeline {
                 sh "ls -lsR ./"
                 sh "pwd"
                 sh "echo COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME} >> ./.env"
+                sh "echo BUILD_ID=${BUILD_NUMBER} >> ./.env"
                 sh "docker-compose build"
                 sh "docker-compose push"
             }
