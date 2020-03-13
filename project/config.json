@@ -3,6 +3,6 @@
         "username": "userdba",
         "password": "s3cur3w0rd4p45S",
         "db": "mydb",
-        "db_host":"db"
+        "db_host":"localhost"
     }
 }

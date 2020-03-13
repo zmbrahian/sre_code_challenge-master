@@ -17,8 +17,6 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
   app:
-    links:
-      - db
     image: zmbrahian/${COMPOSE_PROJECT_NAME}-app:${BUILD_ID}
     restart: always
     build:
