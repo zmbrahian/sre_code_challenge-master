@@ -8,9 +8,10 @@ pipeline {
             steps {
                 echo "Compilando Solucion"
                 sh "ls -lsR ./"
-//                sh "echo BUILD_ID=${BUILD_NUMBER} >> ./.env"
-                sh "docker-compose build"
-                sh "docker-compose push"
+                sh "pwd"
+//                sh "echo COMPOSE_PROJECT_NAME= >> ./.env"
+//                sh "docker-compose build"
+//                sh "docker-compose push"
             }
         }
         stage('Testing') {
