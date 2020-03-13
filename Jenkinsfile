@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo "Compilando Solucion"
                 sh "ls -lsR ./"
-                sh "echo BUILD_ID=${BUILD_NUMBER} >> ./.env"
+//                sh "echo BUILD_ID=${BUILD_NUMBER} >> ./.env"
                 sh "docker-compose build"
             }
         }
