@@ -13,7 +13,7 @@ pipeline {
                 echo "Compilando Solucion"
                 sh "ls -lsR ./"
                 sh "pwd"
-                sh "echo COMPOSE_PROJECT_NAME= >> ./.env"
+                sh "echo ${COMPOSE_PROJECT_NAME}= >> ./.env"
 //                sh "docker-compose build"
 //                sh "docker-compose push"
             }
