@@ -7,6 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Compilando Solucion"
+                ls -lsR ./
+                docker-compose Build
             }
         }
         stage('Testing') {
