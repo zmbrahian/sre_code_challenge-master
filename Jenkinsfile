@@ -31,7 +31,7 @@ pipeline {
                     // the code in here can access $pass and $user
                     sh "ecs-cli configure profile --profile-name profile_name --access-key $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY"
                     sh "ecs-cli configure --cluster pdn-hello-ecs --default-launch-type EC2 --region us-east-2 --config-name config-ecs"
-                    sh "cat <<EOF>> ecs-params.yml
+                    sh "cat <<EOF >> ecs-params.yml
 version: 1
 task_definition:
   task_execution_role: ecsTaskExecutionRole
