@@ -3,8 +3,6 @@ version: '3'
 services:
 
   db:
-    links: 
-      - app
     image: zmbrahian/${COMPOSE_PROJECT_NAME}-db:${BUILD_ID}
     command: --default-authentication-plugin=mysql_native_password
     restart: always
