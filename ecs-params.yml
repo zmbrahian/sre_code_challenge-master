@@ -8,10 +8,10 @@ task_definition:
   services:
     db:
       repository_credentials:
-        credentials_parameter: arn:aws:iam::030359054911:policy/dockerhubsecret
+        credentials_parameter: "arn:aws:secretsmanager:us-east-2:030359054911:secret:Github-zmbrahian-bDatd3"
     app:
       repository_credentials:
-        credentials_parameter: arn:aws:iam::030359054911:policy/dockerhubsecret  
+        credentials_parameter: "arn:aws:secretsmanager:us-east-2:030359054911:secret:Github-zmbrahian-bDatd3" 
 run_params:
   network_configuration:
     awsvpc_configuration:
