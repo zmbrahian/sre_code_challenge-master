@@ -19,4 +19,4 @@ run_params:
         - "subnet-0056677bd385b635b"
       security_groups:
         - "sg-0c9dff1f7a9894377"
-      assign_public_ip: DISABLED
+      assign_public_ip: ENABLED
