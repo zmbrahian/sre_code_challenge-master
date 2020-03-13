@@ -9,6 +9,8 @@ pipeline {
                 echo "Compilando Solucion"
                 sh "ls -lsR ./"
                 sh "pwd"
+                env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+                echo ${GIT_REPO_NAME}
 //                sh "echo COMPOSE_PROJECT_NAME= >> ./.env"
 //                sh "docker-compose build"
 //                sh "docker-compose push"
