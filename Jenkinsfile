@@ -10,6 +10,7 @@ pipeline {
                 sh "ls -lsR ./"
 //                sh "echo BUILD_ID=${BUILD_NUMBER} >> ./.env"
                 sh "docker-compose build"
+                sh "docker-compose push"
             }
         }
         stage('Testing') {
