@@ -1,21 +1,25 @@
 pipeline {
     agent {
-        any
+        label 'docker-agent'
     }
+
     stages {
         stage('Build') {
-            environment {
-                BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
-            }
             steps {
                 echo "Compilando Solucion"
             }
         }
-        stage('Example stage 2') {
+        stage('Testing') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'hello-kb', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                echo "Haciendo Pruebas"
+            }
+        }
+        stage('Deploying') {
+            steps {
+                echo "Haciendo Deploy"
+               // withCredentials([usernamePassword(credentialsId: 'aws-profile', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     // the code in here can access $pass and $user
-                }
+               // }
             }
         }
     }
